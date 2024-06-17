@@ -3,10 +3,10 @@
 //import db.js file
 const db = require('../services/db')
 
-//get all the employees details from the database
+//get all the  details from the database
 
 const getAllEmployees = ()=>{
-    return db.employee.find().then((result)=>{//result - details of employee
+    return db.employee.find().then((result)=>{//result - details 
         if(result){
             return{
                 statusCode:200,
@@ -21,8 +21,8 @@ const getAllEmployees = ()=>{
         }
     })
 }
-//add a new employee details into the database
-const addEmployee=(id,name,age,designation,salary)=>{
+//add a new  details into the database
+const addEmployee=(id,name,task,technologies)=>{
     return db.employee.findOne({id}).then((result)=>{
         if(result){
             
@@ -32,7 +32,7 @@ const addEmployee=(id,name,age,designation,salary)=>{
             }
         } 
         else{//this id is not in the database then it save to database
-            const newEmployee = new db.employee({id,name,age,designation,salary})
+            const newEmployee = new db.employee({id,name,task,technologies})
             //to save to the database
             newEmployee.save()
             return{
@@ -57,7 +57,7 @@ const deletedata=(id)=>{
         }
     })
   }
-//view employee page
+//view page
   const viewdata=(id)=>{
     return db.employee.findOne({id}).then((result)=>{
         if(result){
@@ -77,43 +77,16 @@ const deletedata=(id)=>{
         }
     })
 }
-//edit an employee
-// const updateAnEmployee = (id,name,age,designation,salary)=>{
-//     return db.employee.findOne({id}).then((result)=>{
-//         if(result){
-//             //assiging updated information to the database value
-//             result.id=id;
-//             result.name=name;
-//             result.age=age;
-//             result.designation=designation;
-//             result.salary=salary
-//         //save updated details
-//             result.save()
-//             return{
-//                 statusCode:200,
-//                 employees:'employee data update successfully'
-//             }
-
-//         }
-//         else{
-//             return{
-//                 statusCode:404,
-//                 message:'cant find employee'
-//             }
-          
-
-//         }
-//     })
-// }
-const updateAnEmployee=(id,name,age,designation,salary)=>{//updated data
-    return db.employee.findOne({id}).then((result)=>{//result - details of employees
+//update page
+const updateAnEmployee=(id,name,task,technologies)=>{//updated data
+    return db.employee.findOne({id}).then((result)=>{//result - details 
         if(result){
             //assiging updated information to the database values
             result.id = id;
             result.name = name;
-            result.age = age;
-            result.designation = designation;
-            result.salary = salary
+            result.task = task;
+            result.technologies = technologies
+
 
             //save updated details into db
             result.save()

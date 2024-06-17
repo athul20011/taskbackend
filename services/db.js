@@ -3,16 +3,15 @@
 const mongoose = require('mongoose')
 
 //connection string
-mongoose.connect('mongodb://127.0.0.1:27017/EMS');
+mongoose.connect('mongodb://127.0.0.1:27017/tasks');
 
 
 //model creation
-const employee = mongoose.model('employee',{
+const employee = mongoose.model('Task',{
     id:String,
     name:String,
-    age:String,
-    designation:String,
-    salary:String
+    task:String,
+    technologies:String
 })
 
 module.exports={

@@ -24,45 +24,35 @@
     console.log('Ems server listening on port 8000');
   })
 
-  //API call for get all employees details 
+  //API call for get all 
   emsServer.get('/get-all-employees',(req,res)=>{
     logic.getAllEmployees().then((response)=>{ //response - all the details
       res.status(response.statusCode).json(response);
     })
   })
 
-  //api call for add an employee
+  //api call for add 
 emsServer.post('/add-an-employee',(req,res)=>{
-  logic.addEmployee(req.body.id,req.body.name,req.body.age,req.body.designation,req.body.salary).then((response)=>{
+  logic.addEmployee(req.body.id,req.body.name,req.body.task,req.body.technologies).then((response)=>{
     res.status(response.statusCode).json
   })
 })
-// emsServer.delete('/delete-an-employee/:id',(req,res)=>{
-//   logic.deleteEmployee(req.params.id).then((response)=>{
-//     res.status(response.statusCode).json
-//     (response);
-//   })
-// })
-//API call for delete employee
+
+//API call for delete 
 emsServer.delete('/delete-an-employee/:id',(req,res)=>{
   logic.deletedata(req.params.id).then((response)=>{
     res.status(response.statusCode).json(response);
   })
 })
-//API call for view an employee
+//API call for view 
 emsServer.get('/view-an-employee/:id',(req,res)=>{
   logic.viewdata(req.params.id).then((response)=>{
     res.status(response.statusCode).json(response);
   })
 })
-//api call for update an employee
-// emsServer.post('/update-an-employee/:id',(req,res)=>{
-//   logic.updateAnEmployee(req.params.id,req.body.name,req.body.age,req.body.designation,req.body.salary).then((response)=>{
-//     // res.status(response.statusCode).json(response);
-//   })
-// })
+//api call for update
 emsServer.post('/update-an-employee/:id',(req,res)=>{
-  logic.updateAnEmployee(req.params.id,req.body.name,req.body.age,req.body.designation,req.body.salary).then((response)=>{//response - an employees details
+  logic.updateAnEmployee(req.params.id,req.body.name,req.body.task,req.body.technologies).then((response)=>{
       res.status(response.statusCode).json(response);
   })
 })
